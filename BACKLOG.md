@@ -1,34 +1,34 @@
-\# BACKLOG - Projet SI Java
+\# Backlog - Projet SI Java
 
 
 
-\## US-01 Init
-
-Initialisation du projet avec Gradle et structure.
+\## MVP
 
 
 
-\## US-02 Register
+\- \[ ] US-01 Init repo + Gradle + structure
 
-Fonctionnalité d’inscription utilisateur.
+\- \[ ] US-02 Auth: register
 
+\- \[ ] US-03 Auth: login
 
+\- \[ ] US-04 Ressource métier 1: CRUD
 
-\## US-03 Login
+\- \[ ] US-05 Ressource métier 2: CRUD (liée à ressource 1)
 
-Connexion des utilisateurs.
-
-
-
-\## US-04 CRUD Project
-
-Création, lecture, mise à jour, suppression des projets.
+\- \[ ] US-06 Filtre / recherche simple
 
 
 
-\## US-05 CRUD Task
-
-CRUD des tâches dans un projet.
+\## Bonus
 
 
+
+\- \[ ] Swagger / OpenAPI
+
+\- \[ ] Pagination + tri
+
+\- \[ ] Docker Compose
+
+\- \[ ] CI build + tests
 
