@@ -1,42 +1,65 @@
-\# Projet SI Java - Groupe 4
+# Projet SI Java - ESIEE‑IT (2025‑2026)
 
+## Contexte
 
+Projet SI en Java : construire une API backend propre, structurée, documentée et testée, avec un workflow Git proche entreprise.
 
-\## Objectif
+## Objectifs
 
-Initier le projet SI Java avec Gradle et structure d'équipe.
+- Mettre en place un dépôt Git propre (main/develop/feature)
+- Implémenter un MVP (auth + gestion de ressources métier)
+- Respecter une architecture claire (controller/service/repository)
+- Ajouter des tests unitaires
+- Produire une documentation exploitable (README + backlog)
 
+## Équipe
 
+- Nom Prénom - rôle (PO / Lead Dev / Dev / QA)
+- Nom Prénom - rôle
+- Nom Prénom - rôle
 
-\## Équipe
+## Stack
 
-\- Maxen – Développement
+- Java 17/21
+- Gradle (wrapper)
+- JUnit 5
+- (à venir) Spring Boot, DB, Docker
 
-\- Autres membres…
+## Installation
 
+### Prérequis
 
+- Java 17/21
+- Git
 
-\## Prérequis
+### Cloner
 
-\- Java 17 ou 21
+\`\`\`bash
+git clone <URL>
+cd <repo>
+\`\`\`
 
-\- Git
+## Lancer
 
-\- Gradle (wrapper inclus)
+### Tests
 
-\- IDE : IntelliJ / VS Code
+\`\`\`bash
+./gradlew test
+\`\`\`
 
+### Run (si application Gradle)
 
+\`\`\`bash
+./gradlew run
+\`\`\`
 
-\## Installation
+## Workflow Git
 
-```bash
+- **main** : stable
+- **develop** : intégration
+- **feature/*** : 1 user story = 1 branche
+- PR obligatoire vers develop
 
-git clone <URL\_DU\_REPO>
+## Backlog
 
-cd projet-si-java-groupe4
-
-./gradlew.bat build
-
-
-
+Voir `BACKLOG.md`.
