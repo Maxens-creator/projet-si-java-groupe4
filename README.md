@@ -63,3 +63,8 @@ cd <repo>
 ## Backlog
 
 Voir `BACKLOG.md`.
+
+## Documentation
+
+- [Domain Model](docs/DOMAIN_MODEL.md)
+- [Package Structure](docs/PACKAGE_STRUCTURE.md)
