@@ -1,22 +1,56 @@
 package com.esiee.project.application.service;
 
-import com.esiee.project.domain.model.Task;
-import com.esiee.project.infrastructure.repository.InMemoryTaskRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.esiee.project.api.dto.TaskCreateRequest;
+import com.esiee.project.api.dto.TaskUpdateRequest;
+import com.esiee.project.application.port.TaskRepository;
+import com.esiee.project.domain.exception.ResourceNotFoundException;
+import com.esiee.project.domain.model.Task;
+
+@Service
 public class TaskService {
 
-    private final InMemoryTaskRepository repository = new InMemoryTaskRepository();
+    private final TaskRepository taskRepository;
 
-    public List<Task> findAll() { return repository.findAll(); }
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
-    public Optional<Task> findById(Long id) { return repository.findById(id); }
+    public Task create(TaskCreateRequest req) {
+        Task task = new Task(req.getTitle(), req.getDescription());
+        return taskRepository.save(task);
+    }
 
-    public Task create(Task task) { return repository.save(task); }
+    public List<Task> getAll() {
+        return taskRepository.findAll();
+    }
 
-    public Task update(Task task) { return repository.save(task); }
+    public Task getById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task introuvable: id=" + id));
+    }
 
-    public void delete(Long id) { repository.delete(id); }
+    public Task update(Long id, TaskUpdateRequest req) {
+        Task task = getById(id);
+
+        if (req.getTitle() != null) {
+            task.setTitle(req.getTitle());
+        }
+
+        if (req.getDescription() != null) {
+            task.setDescription(req.getDescription());
+        }
+
+        return taskRepository.save(task);
+    }
+
+    public void delete(Long id) {
+        if (!taskRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Task introuvable: id=" + id);
+        }
+        taskRepository.deleteById(id);
+    }
 }
