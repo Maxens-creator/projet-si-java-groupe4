@@ -1,26 +1,13 @@
-server:
-  port: 8080
-
 spring:
-  application:
-    name: project-si-api
-
   datasource:
-    url: jdbc:mysql://localhost:3307/project_si_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Paris
+    url: jdbc:mysql://localhost:3307/project_si_db
     username: project_user
-    password: project_pass
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: project_password
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
 
-logging:
-  level:
-    org.hibernate.SQL: debug
-    org.hibernate.orm.jdbc.bind: trace
+server:
+  port: 8080

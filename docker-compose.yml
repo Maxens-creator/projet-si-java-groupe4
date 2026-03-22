@@ -1,32 +1,22 @@
+version: '3.8'
+
 services:
   db:
     image: mysql:8.4
     container_name: esiee_project_db
-    restart: unless-stopped
+    restart: always
+
     environment:
       MYSQL_DATABASE: project_si_db
       MYSQL_USER: project_user
-      MYSQL_PASSWORD: project_pass
-      MYSQL_ROOT_PASSWORD: root_pass
-      TZ: Europe/Paris
+      MYSQL_PASSWORD: project_password
+      MYSQL_ROOT_PASSWORD: root
+
     ports:
       - "3307:3306"
-    volumes:
-      - db_data_mysql:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
 
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: esiee_project_phpmyadmin
-    restart: unless-stopped
-    depends_on:
-      - db
-    environment:
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root_pass
-    ports:
-      - "8081:80"
+    volumes:
+      - db_data:/var/lib/mysql
 
 volumes:
-  db_data_mysql:
+  db_data:
