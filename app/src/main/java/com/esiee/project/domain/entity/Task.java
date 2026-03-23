@@ -1,13 +1,16 @@
 package com.esiee.project.domain.entity;
 
-import com.esiee.project.domain.enumtype.TaskPriority;
-import com.esiee.project.domain.enumtype.TaskStatus;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import java.time.LocalDate;
+
+import com.esiee.project.domain.enums.TaskStatus;
 
 @Entity
-@Table(name = "tasks")
+@Getter
+@Setter
 public class Task {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,21 +19,10 @@ public class Task {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status = TaskStatus.TODO;
+    private TaskStatus status;
 
-    @Enumerated(EnumType.STRING)
-    private TaskPriority priority = TaskPriority.MEDIUM;
+    private LocalDate dueDate;
 
     @ManyToOne
     private Project project;
-
-    public Task() {}
-
-    // ⚠️ IMPORTANT (corrige ton bug)
-    public Task(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
-    public Long getId() { return id; }
 }

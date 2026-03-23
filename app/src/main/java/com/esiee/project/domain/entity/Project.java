@@ -1,23 +1,20 @@
 package com.esiee.project.domain.entity;
 
-import com.esiee.project.domain.enumtype.ProjectStatus;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "projects")
+@Getter
+@Setter
 public class Project {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private ProjectStatus status = ProjectStatus.DRAFT;
+    private String description;
 
     @ManyToOne
     private User owner;
-
-    public Project() {}
 }

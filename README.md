@@ -60,6 +60,57 @@ cd <repo>
 - **feature/*** : 1 user story = 1 branche
 - PR obligatoire vers develop
 
+TP4.2 – Rapport de synthèse
+Repositories créés
+
+UserRepository : gestion des utilisateurs, recherche par email pour futur JWT
+
+ProjectRepository : accès aux projets, filtrage par owner
+
+TaskRepository : gestion des tâches, query methods pour filtrer par status et projectId
+
+Query methods ajoutées
+
+List<Task> findByStatus(TaskStatus status)
+
+List<Task> findByProjectId(Long projectId)
+
+Optional<User> findByEmail(String email)
+
+CRUD standard héritées de JpaRepository
+
+Services migrés
+
+TaskService : suppression des mocks, utilisation des repositories JPA
+
+Gestion correcte des cas “introuvable” via Optional.orElseThrow
+
+Stratégie de seed
+
+CommandLineRunner insère un utilisateur et un projet de test si la base est vide
+
+Tâches de test liées à ce projet pour cohérence des relations
+
+Problèmes rencontrés
+
+Driver MySQL absent -> ajouté mysql-connector-java:8.0.33
+
+Méthodes setX non trouvées -> ajouté Lombok (@Getter, @Setter, @NoArgsConstructor, @AllArgsConstructor)
+
+Validation @Valid et contraintes @NotBlank, @Size, @Pattern -> dépendances Jakarta Validation
+
+Lazy loading et sérialisation JSON -> utilisé DTOs pour les réponses API
+
+À améliorer avant séance 5
+
+Ajouter JWT pour authentification
+
+Gérer les rôles (admin / user) dans les endpoints
+
+Compléter les DTOs pour Project et User
+
+Ajouter tests unitaires pour services et controllers
+
 ## Backlog
 
 Voir `BACKLOG.md`.
